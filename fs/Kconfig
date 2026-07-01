@@ -328,4 +328,112 @@ source "fs/nls/Kconfig"
 source "fs/dlm/Kconfig"
 source "fs/unicode/Kconfig"
 
+menu "KSU SUSFS Configurations"
+
+config KSU_SUSFS
+	bool "KSU SUSFS"
+	depends on KSU
+	default n
+	help
+	  Enable SUSFS (SUS File System) support for KernelSU-Next: hides
+	  root/KSU artifacts from selected pathname, mount, mount-list and
+	  process-info lookups.
+
+config KSU_SUSFS_HAS_MAGIC_MOUNT
+	bool "KSU SUSFS Magic Mount support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_SUS_PATH
+	bool "KSU SUSFS Path setting support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_SUS_MOUNT
+	bool "KSU SUSFS Mount setting support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_SUS_MOUNT_MNT_ID_REORDER
+	bool "KSU SUSFS Mount ID Reorder support for SUS Mount"
+	depends on KSU_SUSFS_SUS_MOUNT
+	default n
+
+config KSU_SUSFS_AUTO_ADD_SUS_KSU_DEFAULT_MOUNT
+	bool "KSU SUSFS Auto Add SUS Mount for KSU default mounts"
+	depends on KSU_SUSFS_SUS_MOUNT
+	default n
+
+config KSU_SUSFS_AUTO_ADD_SUS_BIND_MOUNT
+	bool "KSU SUSFS Auto Add SUS Mount for bind-mounts"
+	depends on KSU_SUSFS_SUS_MOUNT
+	default n
+
+config KSU_SUSFS_AUTO_ADD_TRY_UMOUNT_FOR_BIND_MOUNT
+	bool "KSU SUSFS Auto Add Try Umount for bind-mounts"
+	depends on KSU_SUSFS_TRY_UMOUNT
+	default n
+
+config KSU_SUSFS_SUS_KSTAT
+	bool "KSU SUSFS Kstat setting support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_SUS_OVERLAYFS
+	bool "KSU SUSFS Overlayfs setting support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_TRY_UMOUNT
+	bool "KSU SUSFS Auto Try Umount support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_SPOOF_UNAME
+	bool "KSU SUSFS Spoof Uname support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_ENABLE_LOG
+	bool "KSU SUSFS Debug logging support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_HIDE_KSU_SUSFS_SYMBOLS
+	bool "KSU SUSFS Hide KSU/SUSFS symbols from kallsyms"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG
+	bool "KSU SUSFS Spoof cmdline or bootconfig support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_OPEN_REDIRECT
+	bool "KSU SUSFS Open Redirect support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_SUS_MAPS
+	bool "KSU SUSFS Maps setting support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_SUS_MEMFD
+	bool "KSU SUSFS Memfd setting support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_SUS_PROC_FD_LINK
+	bool "KSU SUSFS Proc fd link setting support"
+	depends on KSU_SUSFS
+	default n
+
+config KSU_SUSFS_SUS_SU
+	bool "KSU SUSFS Sus SU support (legacy)"
+	depends on KSU_SUSFS
+	default n
+
+endmenu
+
 endmenu
